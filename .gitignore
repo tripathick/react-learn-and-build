@@ -1,0 +1,4 @@
+# These files are temprorary Files.
+/node_modules
+/dist
+.parcel-cache

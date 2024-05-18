@@ -1,4 +1,9 @@
-const heading = React.createElement("h1" , {} , "Hello World from React!!...");
+import React from "react";
+import ReactDOM from "react-dom/client"
+
+
+
+// const heading = React.createElement("h1" , {} , "Hello World from React!!...");
 // Here createElement method takes 3 argument i.e (element  , object -> for providing attribute for
 // given tag/element , content inside given element)
 
