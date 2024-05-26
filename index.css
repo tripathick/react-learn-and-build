@@ -1,12 +1,68 @@
-#parent{
-    /* color: red; */
-
-}
-#c1{
-    color:red;
-
+* {
+    box-sizing: border-box;
 }
 
-#c2{
-    color: green;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.logo-img {
+    width: 140px;
+}
+
+.nav-items {
+    padding: 0px 105px;
+}
+
+.nav-items > ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-items > ul > li {
+    padding: 10px;
+    margin: 10px;
+}
+
+.search {
+    padding: 20px;
+}
+
+.res-cont {
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping */
+    gap: 20px; /* Add gap between cards */
+    overflow-y: auto; /* Vertical scroll if needed */
+}
+
+.rest-card {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: calc(12.33%); /* Adjust the width to fit 3 cards per row with some spacing */
+}
+
+.rest-card:hover {
+    border: 1px dotted black;
+    cursor: pointer;
+}
+
+.res-card-img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px;
+}
+
+h3, h4, h5, h6 {
+    margin: 0.5rem 0;
 }

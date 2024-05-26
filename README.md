@@ -14,3 +14,8 @@ npm install react-dom
 
 File which is not useful for production, that file put in .gitignore
 
+VS code Extension :
+Bracket Pair Colorization Toggler
+Prettier - Code formatter
+ESLint
+Better Comments
