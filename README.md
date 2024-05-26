@@ -19,3 +19,10 @@ Bracket Pair Colorization Toggler
 Prettier - Code formatter
 ESLint
 Better Comments
+
+.....................
+till lecture -4 :
+-->Till i have learn how to use props and purpose of using props.
+--> and also use different way writing props
+--> use of key to render the particular component.
+     * key is also use to maintain the rendering cycle of react dm element.
