@@ -26,3 +26,5 @@ till lecture -4 :
 --> and also use different way writing props
 --> use of key to render the particular component.
      * key is also use to maintain the rendering cycle of react dm element.
+# Chrome Extension
+1.Allow CORS: Access-Control-Allow-origin     
