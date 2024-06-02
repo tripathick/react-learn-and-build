@@ -16,6 +16,7 @@ body {
 
 .logo-img {
     width: 140px;
+    cursor: pointer;
 }
 
 .nav-items {
@@ -30,6 +31,7 @@ body {
 .nav-items > ul > li {
     padding: 10px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .search {
@@ -65,4 +67,10 @@ body {
 
 h3, h4, h5, h6 {
     margin: 0.5rem 0;
+}
+
+.srch_btn{
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 15px;
 }
