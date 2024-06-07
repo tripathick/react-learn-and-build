@@ -27,4 +27,10 @@ till lecture -4 :
 --> use of key to render the particular component.
      * key is also use to maintain the rendering cycle of react dm element.
 # Chrome Extension
-1.Allow CORS: Access-Control-Allow-origin     
+1.Allow CORS: Access-Control-Allow-origin
+
+# Key Notes
+-> fetch data using Async and wait.
+-> Implement search funtionality 
+-> Implement filter restautrant on the basis of star rating.
+-> Implement Shimmer UI.

@@ -1,133 +1,65 @@
 import RestaurantCard from "./RestaurantCard";
-import restDataListOfObj from "../utils/mockData"; 
 import { useEffect, useState } from "react";
-import restDataListOfObj from "../utils/mockData";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
 
-    //local state variable
-    // const[listOfRestaurant ,useListOfRestaurant] = useState(
-    //     [   {
-    //                 "info": {
-    //                 "id": "769451",
-    //                 "name": "Pizza Hut",
-    //                 "cloudinaryImageId": "490629b70f89da8a5b93fc199ece335e",
-    //                 "locality": "Kalikapur",
-    //                 "areaName": "Kolkata",
-    //                 "costForTwo": "₹350 for two",
-    //                 "cuisines": [
-    //                 "Pizzas"
-    //                 ],
-    //                 "avgRating": 3.3,        
-    //              }
-    //             },
-    //             {
-        
-    //                 "info": {
-    //                 "id": "769452",
-    //                 "name": "Dominos",
-    //                 "cloudinaryImageId": "490629b70f89da8a5b93fc199ece335e",
-    //                 "locality": "Kalikapur",
-    //                 "areaName": "Kolkata",
-    //                 "costForTwo": "₹350 for two",
-    //                 "cuisines": [
-    //                 "Pizzas"
-    //                 ],
-    //                 "avgRating": 4.5,        
-    //              }
-    //             },
-    //             {
-    //                 "info": {
-    //                 "id": "769453",
-    //                 "name": "KFC",
-    //                 "cloudinaryImageId": "490629b70f89da8a5b93fc199ece335e",
-    //                 "locality": "Kalikapur",
-    //                 "areaName": "Kolkata",
-    //                 "costForTwo": "₹350 for two",
-    //                 "cuisines": [
-    //                 "Pizzas"
-    //                 ],
-    //                 "avgRating": 4.3,        
-    //              }
-    //             }  
-    //     ]
-    // )
-
-
-    //normal js variable
-    // let listOfRestaurant1 = [
-    //     {
-    //         "info": {
-    //         "id": "769451",
-    //         "name": "Pizza Hut",
-    //         "cloudinaryImageId": "490629b70f89da8a5b93fc199ece335e",
-    //         "locality": "Kalikapur",
-    //         "areaName": "Kolkata",
-    //         "costForTwo": "₹350 for two",
-    //         "cuisines": [
-    //         "Pizzas"
-    //         ],
-    //         "avgRating": 3.3,        
-    //      }
-    //     },
-    //     {
-
-    //         "info": {
-    //         "id": "769452",
-    //         "name": "Dominos",
-    //         "cloudinaryImageId": "490629b70f89da8a5b93fc199ece335e",
-    //         "locality": "Kalikapur",
-    //         "areaName": "Kolkata",
-    //         "costForTwo": "₹350 for two",
-    //         "cuisines": [
-    //         "Pizzas"
-    //         ],
-    //         "avgRating": 4.5,        
-    //      }
-    //     },
-    //     {
-    //         "info": {
-    //         "id": "769453",
-    //         "name": "KFC",
-    //         "cloudinaryImageId": "490629b70f89da8a5b93fc199ece335e",
-    //         "locality": "Kalikapur",
-    //         "areaName": "Kolkata",
-    //         "costForTwo": "₹350 for two",
-    //         "cuisines": [
-    //         "Pizzas"
-    //         ],
-    //         "avgRating": 4.3,        
-    //      }
-    //     }  
-
-    //  ]
-
-    const [listOfRestaurant , useListOfRestaurant] = useState(restDataListOfObj);
+     const [listOfRestaurant , setListOfRestaurant] = useState([]);
+     const [searchText , setSearchText] = useState("");
+     const [filteredRestaurant , setFilteredRestaurant] = useState([]);
+    //  Whenever state variable updates,react triggers a reconcillation cycle(re-renders the component )
+     console.log("body Renderd")
 
     useEffect(() => {
         // console.log("useEffect Called");
         fetchData()
-    } , [])
+    } , []);
+
+
     const fetchData = async() => {
              const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5802223&lng=88.5105955&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
              const json = await data.json();
 
-             console.log(json.data.cards[4].card.card.gridElements)
-             useListOfRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+            console.log(json.data.cards[3].card.card.gridElements)
+            setListOfRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+            setFilteredRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
 
     }
-   //console.log("body will rendered first ? Let us see...")
+    // if(listOfRestaurant.length === 0){
+    //     // return <h1>Loading</h1>
+    //     return <Shimmer/>
+    // }
 
-    return (
+    return listOfRestaurant.length === 0 ? <Shimmer/> : (
         <div className="body">
-            <div className="search">
+            <div className="filter">
+                <div className="search">
+                    <input 
+                      type="text"
+                      className="search-box"
+                      value={searchText} 
+                      onChange={(e) => {
+                         setSearchText(e.target.value);
+                      }}  
+                      />
+                    <button className="srch-btn" onClick={() => {
+                        // Filter the restaurant card and update the UI
+                        // searchText
+                        console.log(searchText)
+                        const filteredRestaurant = listOfRestaurant.filter((res) =>
+                          res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+
+                          // setListOfRestaurant(filteredRestaurant);
+                          setFilteredRestaurant(filteredRestaurant);
+                    }}>search</button> 
+                </div>
                 <button 
-                 className="srch_btn"
+                 className="filter_btn"
                  onClick={ () => {
                     // console.log("Clicked")
                    const filteredListOfRestaurant = listOfRestaurant.filter((res) => res.info.avgRating > 4.2);
-                   useListOfRestaurant(filteredListOfRestaurant);
+                   setListOfRestaurant(filteredListOfRestaurant);
                     console.log(filteredListOfRestaurant)
                  }}>
                  Top Rated Restaurant</button>
@@ -138,7 +70,7 @@ const Body = () => {
                     <RestaurantCard key={restaurant.info.id} restData={restaurant}/>
                   ))
                   } */}
-                  {listOfRestaurant.map((restaurant) => (
+                  {filteredRestaurant.map((restaurant) => (
                     <RestaurantCard key={restaurant.info.id} restData={restaurant}/>
                   ))
                   }

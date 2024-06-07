@@ -34,8 +34,19 @@ body {
     cursor: pointer;
 }
 
-.search {
-    padding: 20px;
+.login-btn{
+    padding: 0px 15px;
+    border: none;
+    cursor: pointer;
+}
+.filter{
+    padding: 10px;
+    display: flex;
+}
+
+.filter_btn {
+    padding: 3px;
+    margin: 0px 20px;
 }
 
 .res-cont {
@@ -73,4 +84,16 @@ h3, h4, h5, h6 {
     cursor: pointer;
     border-radius: 5px;
     padding: 15px;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card{
+    width: 200px;
+    background-color: #f0f0f0;
+    height: 400px;
+    margin: 10px;
+    border-radius: 5px;
 }
