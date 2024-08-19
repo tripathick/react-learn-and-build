@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -8,12 +10,13 @@ const Body = () => {
      const [searchText , setSearchText] = useState("");
      const [filteredRestaurant , setFilteredRestaurant] = useState([]);
     //  Whenever state variable updates,react triggers a reconcillation cycle(re-renders the component )
-     console.log("body Renderd")
+     console.log("body Rendered")
 
     useEffect(() => {
+
         // console.log("useEffect Called");
         fetchData()
-    } , []);
+    },[]);
 
 
     const fetchData = async() => {
@@ -59,22 +62,23 @@ const Body = () => {
                  onClick={ () => {
                     // console.log("Clicked")
                    const filteredListOfRestaurant = listOfRestaurant.filter((res) => res.info.avgRating > 4.2);
-                   setListOfRestaurant(filteredListOfRestaurant);
+                  //  setListOfRestaurant(filteredListOfRestaurant);
+                  setFilteredRestaurant(filteredListOfRestaurant)
                     console.log(filteredListOfRestaurant)
                  }}>
                  Top Rated Restaurant</button>
             </div>
             <div className="res-cont">
                   
-                  {/* {restDataListOfObj.map((restaurant , key) => (
+                 {/* {listOfRestaurant.map((restaurant) => (
                     <RestaurantCard key={restaurant.info.id} restData={restaurant}/>
                   ))
                   } */}
                   {filteredRestaurant.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} restData={restaurant}/>
-                  ))
+                    <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><RestaurantCard restData = {restaurant}/></Link>
+                   ))
                   }
-
+                 
                     
             </div>
             

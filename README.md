@@ -34,3 +34,8 @@ till lecture -4 :
 -> Implement search funtionality 
 -> Implement filter restautrant on the basis of star rating.
 -> Implement Shimmer UI.
+
+
+# For making path/End point 
+-> We will use react router dom 
+-> command : npm install react-router-dom
