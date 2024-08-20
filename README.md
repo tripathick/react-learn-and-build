@@ -39,3 +39,5 @@ till lecture -4 :
 # For making path/End point 
 -> We will use react router dom 
 -> command : npm install react-router-dom
+
+# basically we are develop custom hooks(useRestaurant) for fetching restaurantMenu.
